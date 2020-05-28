@@ -1,0 +1,128 @@
+I"�4<h1 id="firebase-데이터-삭제-조회-업데이트">[Firebase] 데이터 삭제, 조회, 업데이트</h1>
+
+<h2 id="데이터-삭제하기">데이터 삭제하기</h2>
+
+<h3 id="문서-삭제하기">문서 삭제하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">FirebaseFirestore</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">FirebaseFirestore</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+<span class="n">db</span><span class="o">.</span><span class="na">collection</span><span class="o">(</span><span class="s">"users"</span><span class="o">).</span><span class="na">document</span><span class="o">(</span><span class="s">"userinfo"</span><span class="o">)</span>
+	<span class="o">.</span><span class="na">delete</span><span class="o">()</span>
+	<span class="o">.</span><span class="na">addOnSuccessListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">OnSuccessListener</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;()</span> <span class="o">{</span>
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="o">(</span><span class="nc">Void</span> <span class="n">aVoid</span><span class="o">){</span>
+		<span class="o">}</span>		
+	<span class="o">})</span>
+	<span class="o">.</span><span class="na">addOnFailureListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">OnFailuereLisener</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFailure</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="o">}</span>
+	<span class="o">});</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="문서-안에서-지정된-필드-삭제하기">문서 안에서 지정된 필드 삭제하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">FirebaseFirestore</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">FirebaseFirestore</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+<span class="nc">DocumentReference</span> <span class="n">docRef</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">collection</span><span class="o">(</span><span class="s">"users"</span><span class="o">.</span><span class="na">document</span><span class="o">(</span><span class="s">"userinfo"</span><span class="o">);</span>
+
+<span class="no">MAP</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">updates</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">updates</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"address"</span><span class="o">,</span> <span class="nc">FieldValue</span><span class="o">.</span><span class="na">delete</span><span class="o">());</span>
+
+<span class="n">docRef</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">updates</span><span class="o">).</span><span class="na">addOnCompleteListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">OnCompleteListener</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;()</span> <span class="o">{</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onComplete</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="nc">Task</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">task</span><span class="o">){</span>
+	<span class="o">}</span>		
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="데이터-조회하기">데이터 조회하기</h2>
+
+<h3 id="지정된-문서의-정보를-조회하기---객체로-반환하여-사용하기">지정된 문서의 정보를 조회하기 - 객체로 반환하여 사용하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserInfo</span>
+<span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">...</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="o">...</span>
+<span class="o">}</span>
+<span class="o">...</span>
+<span class="k">if</span><span class="o">(</span><span class="n">document</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span>
+<span class="o">{</span>
+	<span class="nc">UserInfo</span> <span class="n">userInfo</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="na">toObject</span><span class="o">(</span><span class="nc">UserInfo</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	<span class="nc">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"namjinha"</span><span class="o">,</span> <span class="s">"name = "</span> <span class="o">+</span> <span class="n">userInfo</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="쿼리로-조건에-맞는-문서의-정보를-조회하기">쿼리로 조건에 맞는 문서의 정보를 조회하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">db</span><span class="o">.</span><span class="na">collection</span><span class="o">(</span><span class="s">"users"</span><span class="o">)</span>
+<span class="o">.</span><span class="na">whereEqualTo</span><span class="o">(</span><span class="s">"age"</span><span class="o">,</span> <span class="mi">25</span><span class="o">)</span>
+<span class="o">.</span><span class="na">get</span><span class="o">()</span>
+<span class="o">.</span><span class="na">addOnCompleteListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">OnCompleteListener</span><span class="o">&lt;</span><span class="nc">QuerySnapshot</span><span class="o">&gt;()</span>
+<span class="o">{</span>
+	<span class="k">if</span><span class="o">(</span><span class="n">task</span><span class="o">.</span><span class="na">isSuccessful</span><span class="o">())</span>
+	<span class="o">{</span>
+		<span class="k">for</span><span class="o">(</span><span class="nc">QueryDocumentSnapshot</span> <span class="n">document</span> <span class="o">:</span> <span class="n">task</span><span class="o">.</span><span class="na">getResult</span><span class="o">())</span>
+		<span class="o">{</span>
+			<span class="nc">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"namjinha"</span><span class="o">,</span> <span class="n">document</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">" =&gt; "</span> <span class="o">+</span> <span class="n">document</span><span class="o">.</span><span class="na">getData</span><span class="o">());</span>
+			<span class="nc">UserInfo</span> <span class="n">userInfo</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="na">toObject</span><span class="o">(</span><span class="nc">UserInfo</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+			<span class="nc">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"namjinha"</span><span class="o">,</span> <span class="s">"name = "</span> <span class="o">+</span> <span class="n">userInfo</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">whereEqualTo()</code></p>
+
+<p><code class="highlighter-rouge">whereGreaterThan ()</code></p>
+
+<p><code class="highlighter-rouge">whereLessThan()</code></p>
+
+<p><code class="highlighter-rouge">whereGreatThanOrEqualTo()</code></p>
+
+<p><code class="highlighter-rouge">whereLessThanOrEqualTo()</code></p>
+
+<h3 id="변경된-데이터를-실시간으로-확인하기">변경된 데이터를 실시간으로 확인하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">DocumentReference</span> <span class="n">docRef</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">collection</span><span class="o">(</span><span class="s">"users"</span><span class="o">.</span><span class="na">document</span><span class="o">(</span><span class="s">"userinfo"</span><span class="o">);</span>
+<span class="n">docRef</span><span class="o">.</span><span class="na">addSnapshotListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">EventListener</span><span class="o">&lt;</span><span class="nc">DocumentSnapshot</span><span class="o">&gt;()</span>
+<span class="o">{</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="nc">DocumentSnapshot</span> <span class="n">snapshot</span><span class="o">,</span>
+											<span class="nd">@Nullable</span> <span class="nc">FirebaseFirestoreException</span> <span class="n">e</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">e</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+		<span class="o">{</span>
+			<span class="k">return</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">snapshot</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span>
+		<span class="o">{</span>
+			<span class="nc">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"namjinha"</span><span class="o">,</span> <span class="s">"Current data: "</span> <span class="o">+</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">getData</span><span class="o">());</span>
+		<span class="o">}</span>
+		<span class="k">else</span>
+		<span class="o">{</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="데이터-업데이트">데이터 업데이트</h2>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">DocumentReference</span> <span class="nx">tdb</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="dl">"</span><span class="s2">User</span><span class="dl">"</span><span class="p">).</span><span class="nb">document</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">getUid</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="dl">"</span><span class="s2">TotalDailyIntake</span><span class="dl">"</span><span class="p">).</span><span class="nb">document</span><span class="p">(</span><span class="nx">date</span><span class="p">);</span>
+<span class="nx">tdb</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">"</span><span class="s2">totalCalories</span><span class="dl">"</span><span class="p">,</span> <span class="nx">FieldValue</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="nx">calories</span><span class="p">));</span>
+</code></pre></div></div>
+:ET

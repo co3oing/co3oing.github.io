@@ -1,0 +1,143 @@
+I"�<h1 id="front-end-프론트엔드의-기본">[Front-end] 프론트엔드의 기본</h1>
+<hr />
+
+<h2 id="프론트엔드-기술">프론트엔드 기술</h2>
+
+<h3 id="html5">HTML5</h3>
+
+<ul>
+  <li>Hyper Text Markup Language</li>
+  <li>웹 페이지 구축을 위한 뼈대가 되는 언어이다.</li>
+</ul>
+
+<h3 id="css">CSS</h3>
+
+<ul>
+  <li>Cascading Style Sheet</li>
+  <li>웹 디자인을 완성시켜 주는 언어이다.</li>
+</ul>
+
+<h3 id="javascript">JavaScript</h3>
+
+<p><br /></p>
+
+<h2 id="웹사이트-구조">웹사이트 구조</h2>
+
+<p>header : 회사 로고와 목차</p>
+
+<p>article : 메인 이미지, 본문 등</p>
+
+<p>footer :사이트에 관한 주요 정보</p>
+
+<p><br /></p>
+
+<h2 id="html-문서-구조">HTML 문서 구조</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+	<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="doctype-html">&lt;!DOCTYPE html&gt;</h3>
+
+<p>문서의 타입 즉, 형식을 명시하기 위한 것으로 HTML 문서의 첫 번째 줄에 나와야 한다.</p>
+
+<h3><meta /></h3>
+
+<p>웹 문서 정보(작성자, 형식, 인코딩 방식)를 지정한다.</p>
+
+<p>빈 태그로 종료 태그가 없다.</p>
+
+<p><br /></p>
+
+<h2 id="head와-body-태그">&lt;head&gt;와 &lt;body&gt; 태그</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+	HTML 문서에 대한 정보, CSS 속성
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+	각종 HTML 태그 정보
+	하단 부분에 자바스크립트
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<h3 id="head-내부에-넣을-수-있는-태그-이름">&lt;head&gt; 내부에 넣을 수 있는 태그 이름</h3>
+
+<ul>
+  <li>meta : 웹 페이지에 추가 정보를 전달한다.</li>
+  <li>title : 웹 페이지의 제목을 나타낸다.</li>
+  <li>script : 웹 페이지에 스크립트를 추가한다.</li>
+  <li>link : 다른 파일을 추가한다.</li>
+  <li>style : 스타일 시트를 추가한다.</li>
+  <li>base : 기본 경로를 지정한다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"Jeju, tourist"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>검색엔진에서 해당 키워드와 관련된 내용을 검색할 경우 이런 키워드가 포함되어 있는 웹 페이지를 보여주게 된다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"JEJU The most beautiful Island in the World"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>사이트에 대한 설명을 나타내 주는 곳이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>현재 사용하는 브라우저에서 보이는 크기를 1로 고정해 주는 역할을 한다.</p>
+
+<p>initial-scale=2로 하게 되면 모바일 브라우저에서만 사이트의 글씨 크기가 2배로 확대되어 보인다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>IE인 경우 가장 최신 브라우저 모드로 보이게끔 처리하는 것이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"3;url=http://www.google.com/"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>3초 후에 google.com으로 사이트가 리다이렉트해주게 된다.</p>
+
+<p>3을 0으로 변경하면 바로 이동한다.</p>
+
+<p><br /></p>
+
+<h2 id="css-파일-적용-방법">CSS 파일 적용 방법</h2>
+
+<ol>
+  <li>
+    <p>임베디드 방식</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;style&gt;</span>
+ 	<span class="nt">h1</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span> <span class="m">32px</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="m">#ccc</span><span class="p">;}</span>
+ 	<span class="o">...</span>
+ <span class="nt">&lt;/style&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>별도의 파일을 호출하는 방식</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"./css/style.css"</span><span class="nt">&gt;</span>
+</code></pre></div>    </div>
+
+    <p>일반적으로 가장 많이 사용하는 방법이다.</p>
+  </li>
+  <li>
+    <p>HTML 태그 내부에 직접 적용하는 방식</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;h1</span> <span class="na">style=</span><span class="s">"font-size:32px;color:#css;"</span><span class="nt">&gt;</span>About Jejudo<span class="nt">&lt;/h1&gt;</span>
+</code></pre></div>    </div>
+
+    <p>가급적 사용하지 않기를 권한다.</p>
+  </li>
+</ol>
+:ET

@@ -39,7 +39,7 @@ aux_links:
     - "//github.com/co3oing"
 
 # Footer content appears at the bottom of every page's main content
-footer_content: "Copyright &copy; co3oing"
+footer_content: "Copyright &copy; co3oing.2020"
 
 # Color scheme currently only supports "dark" or nil (default)
 color_scheme: nil

@@ -44,4 +44,3 @@ permalink: /
 **Soongsil University**
 
 소프트웨어학부 재학중 2017.02 ~
-~                                  

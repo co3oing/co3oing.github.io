@@ -1,0 +1,117 @@
+I"�<h1 id="git">[Git]</h1>
+
+<h3 id="git-1">git</h3>
+
+<hr />
+
+<p><code class="highlighter-rouge">git init</code> git 이 직접적으로 관리하는 영역인 repository를 생성한다.
+<code class="highlighter-rouge">git status</code>
+<code class="highlighter-rouge">git add 1.txt</code>
+<code class="highlighter-rouge">git commit</code> → commit 메시지 입력
+<code class="highlighter-rouge">git log</code>
+master –&gt; commit ID 몰라도 바로가기 기능 //맨 위를 가리키는 바로가기
+head –&gt; 내가 현재 있는 위치//계속 바뀌는 애
+<code class="highlighter-rouge">git branch sub</code></p>
+
+<p><code class="highlighter-rouge">git checkout sub</code>
+<code class="highlighter-rouge">git checkout (commit ID)</code>
+git checkout HEAD~n(n은 HEAD로부터 n번 이전)</p>
+
+<p><code class="highlighter-rouge">git branch</code> 바로가기 목록을 다 볼 수 있다.
+<code class="highlighter-rouge">git log --all --graph</code></p>
+
+<h3 id="remote-저장소를-사용하는-이유">remote 저장소를 사용하는 이유</h3>
+
+<hr />
+
+<ol>
+  <li>날라갈 수 있으므로</li>
+  <li>팀 프로젝트할 경우</li>
+  <li>노트북에서 작업하던 것을 집에서
+집에서 작업하던 것을 노트북에서</li>
+</ol>
+
+<p>master에 합칠 거면 master에 checkout이 되어있어야 함
+<code class="highlighter-rouge">git merge sub(합칠 branch)</code> //bug_fix라는 이름의 brach 활용
+<code class="highlighter-rouge">git diff</code>
+<code class="highlighter-rouge">git branch -d sub(지울 branch)</code>
+<code class="highlighter-rouge">git help (명령어 이름)</code> //git 관련 명령어가 궁금할 때</p>
+
+<p>deleted된 것도 add 해 줘야</p>
+
+<h3 id="원격-저장소-만들기">원격 저장소 만들기</h3>
+
+<hr />
+
+<p><code class="highlighter-rouge">git remote</code> //해당 폴더에 있는 git 주소와 연결된 폴더 정보 보여줌
+<code class="highlighter-rouge">git remote add "이름" "git 주소"</code>
+<code class="highlighter-rouge">git remote rename "옛 이름" "새 이름"</code>
+<code class="highlighter-rouge">git remote get-url "이름"</code> //이름으로 실제 주소를 찾는 것
+<code class="highlighter-rouge">git add .</code> //해당 폴더에 있는 모든 파일을 추가함 //되도록 안 쓰는 것이 좋음
+<code class="highlighter-rouge">git add *</code>
+<code class="highlighter-rouge">git push "이름" "branch이름"</code> // 내 컴퓨터에 ㅇ있는 내용을 github에 업로드
+ex) <code class="highlighter-rouge">git push github master</code> //업로드하고 싶은 가지만 선택해서 업로드 / 아이디와 비번 입력</p>
+
+<h3 id="브랜치-작업">브랜치 작업</h3>
+
+<hr />
+
+<p><code class="highlighter-rouge">git clone "git 주소" ["이름"]</code> //맨 처음에 프로젝트 전체를 복사해 올 때</p>
+
+<p><code class="highlighter-rouge">git pull "remote 저장소 이름" "branch 이름"</code> //내가 가져오고 싶은 가지만 통째로 가져오는 것
+<code class="highlighter-rouge">git push "remote 저장소 이름" "branch 이름"</code> //github에 업로드
+<code class="highlighter-rouge">git branch "이름"</code> //branch 이름
+<code class="highlighter-rouge">git push "remote 저장소 이름" "내 branch 이름"</code> // commit은 하나도 없이 내 branch이름만 외부로 알림
+<code class="highlighter-rouge">git branch -r</code> //remote 저장소에 있는 branch 이름 중 내가 알고 있는 것</p>
+
+<ul>
+  <li>가져오는 명령어
+<code class="highlighter-rouge">fetch</code> //정보만 가져오고 내것을 합치지는 않음
+<code class="highlighter-rouge">pull</code> //fetch + merge</li>
+</ul>
+
+<p><code class="highlighter-rouge">git fetch github</code>
+<code class="highlighter-rouge">git merge github/master</code></p>
+
+<p><code class="highlighter-rouge">git fetch "remote 저장소 이름"</code> //다른 사람의 branch 이름만 가져오는 것 //다른 사람 정보는 모르는 상태
+<code class="highlighter-rouge">git branch "이름" "연결할 branch 명"</code>
+ex) <code class="highlighter-rouge">git branch hyejun github/hyejun</code></p>
+
+<p>minsuk branch에서 <code class="highlighter-rouge">git pull github hyeryeong</code> 하면 minsuk branch에 hyeryeong branch를 합침</p>
+
+<ol>
+  <li><code class="highlighter-rouge">git fetch github</code></li>
+  <li><code class="highlighter-rouge">git merge hyeryeong</code></li>
+</ol>
+
+<p>minsuk의 변경 내용만 가져올 때 반드시 minsuk branch로 checkout한 후 pull해야 함.</p>
+
+<p><code class="highlighter-rouge">git checkout -b "branch 이름"</code> //branch를 만들면서 동시에 checkout</p>
+
+<p>강제 full / push</p>
+
+<p><code class="highlighter-rouge">git fetch —all</code></p>
+
+<p><code class="highlighter-rouge">git reset --hard origin</code></p>
+
+<p><code class="highlighter-rouge">git pull origin master</code></p>
+
+<p><code class="highlighter-rouge">git push -f</code></p>
+
+<h3 id="팀장의-역할">팀장의 역할</h3>
+
+<hr />
+
+<ol>
+  <li>팀원들의 branch 이름을 가져온다
+<code class="highlighter-rouge">git fetch "remote 저장소 이름(github)"</code></li>
+  <li>master로 checkout</li>
+  <li>.팀원들의 branch를 master에 합친다
+<code class="highlighter-rouge">git merge "팀원 branch 이름"</code></li>
+  <li>내 master를 github의 master에 반영
+<code class="highlighter-rouge">git push github master</code></li>
+</ol>
+
+<p>완성된 master를 받아오는 방법
+<code class="highlighter-rouge">git pull github master</code></p>
+:ET
