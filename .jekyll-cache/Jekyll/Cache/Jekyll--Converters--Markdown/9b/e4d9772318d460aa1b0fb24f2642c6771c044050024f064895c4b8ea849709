@@ -1,0 +1,77 @@
+I"1<ul class="catalogue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="catalogue-item">
+    <a href="/docs/git/basic/">
+        
+        
+        <p class="catalogue-type">
+            
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                [Git] 기본 명령어
+            </h1>
+            <p class="catalogue-sub">
+                
+            </p>
+            <p class="catalogue-body">
+                [Git] 기본 명령어 clone 하기   git init : git 이 직접적으로 관리하는 영역인 repository를 생성한다.  git clone...
+            </p>
+        </div>
+    </a>
+</li>  
+
+
+
+
+<li class="catalogue-item">
+    <a href="/docs/git/undo-push/">
+        
+        
+        <p class="catalogue-type">
+            
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                [Git] push 취소, rebase를 통한 Author 변경
+            </h1>
+            <p class="catalogue-sub">
+                
+            </p>
+            <p class="catalogue-body">
+                # [Git] push 취소, rebase를 통한 Author 변경 ## push 취소하기 1. `git checkout [branch]` push를 취소할 branch로 checkout한다. 2. `git reset --hard HEAD^`...
+            </p>
+        </div>
+    </a>
+</li>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+:ET

@@ -1,0 +1,55 @@
+I"�<ul class="catalogue">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="catalogue-item">
+    <a href="/docs/git/undo-push/">
+        
+        
+        <p class="catalogue-type">
+            
+        </p>
+        <div class="catalogue-info transition">
+            <h1 class="catalogue-title">
+                Undo-Push
+            </h1>
+            <p class="catalogue-sub">
+                
+            </p>
+            <p class="catalogue-body">
+                # [Git] push 취소, rebase를 통한 Author 변경 ## push 취소하기 1. `git checkout [branch]` push를 취소할 branch로 checkout한다. 2. `git reset --hard HEAD^`...
+            </p>
+        </div>
+    </a>
+</li>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+:ET

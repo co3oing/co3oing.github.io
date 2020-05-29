@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Basic
+description: "[Git] 기본 명령어"
 parent: Git
 grand_parent: Manual
 nav_order: 2

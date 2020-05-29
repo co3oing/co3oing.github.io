@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Undo-Push
+description: "[Git] push 취소, rebase를 통한 Author 변경"
 parent: Git
 grand_parent: Manual
 nav_order: 1
